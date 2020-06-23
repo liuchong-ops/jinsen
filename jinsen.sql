@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50728
 File Encoding         : 65001
 
-Date: 2020-06-20 18:24:25
+Date: 2020-06-23 16:00:50
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -521,6 +521,10 @@ CREATE TABLE `outyard` (
 -- ----------------------------
 INSERT INTO `outyard` VALUES ('1', '2020-06-01 00:00:00', '闽A313', '三名', '1', '高振赫');
 INSERT INTO `outyard` VALUES ('104', '2020-03-01 00:00:00', '闽A313', '三名', '2', '高振赫');
+INSERT INTO `outyard` VALUES ('105', '2020-06-03 00:00:00', '闽A315', '三峡', '13', '高振赫');
+INSERT INTO `outyard` VALUES ('106', '2020-06-04 00:00:00', '闽A315', '三峡', '3', '高振赫');
+INSERT INTO `outyard` VALUES ('107', '2020-06-06 00:00:00', '闽A316', '三峡', '4', '高振赫');
+INSERT INTO `outyard` VALUES ('108', '2020-06-06 00:00:00', '闽A316', '三峡', '5', '高振赫');
 
 -- ----------------------------
 -- Table structure for overtime
@@ -698,8 +702,33 @@ CREATE TABLE `role` (
 INSERT INTO `role` VALUES ('1', 'asdf', 'fdg');
 INSERT INTO `role` VALUES ('7', '检尺员', '');
 INSERT INTO `role` VALUES ('22', 'dsfs', '');
+INSERT INTO `role` VALUES ('131', '管理员', '1');
 INSERT INTO `role` VALUES ('213', 'dfasf', 'afasdf');
 INSERT INTO `role` VALUES ('231', '123', '123');
+
+-- ----------------------------
+-- Table structure for saleman
+-- ----------------------------
+DROP TABLE IF EXISTS `saleman`;
+CREATE TABLE `saleman` (
+  `workid` double NOT NULL,
+  `treetype` varchar(255) CHARACTER SET utf8 NOT NULL,
+  `unitprice` double NOT NULL,
+  `price` double NOT NULL,
+  `salesman` varchar(255) CHARACTER SET utf8 DEFAULT NULL,
+  PRIMARY KEY (`workid`,`treetype`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+-- ----------------------------
+-- Records of saleman
+-- ----------------------------
+INSERT INTO `saleman` VALUES ('1', '杂原木', '5', '182.99999833106995', '任');
+INSERT INTO `saleman` VALUES ('104', '杉原木', '2', '41.999998688697815', '任哥');
+INSERT INTO `saleman` VALUES ('105', '杉原木', '3', '39.59999978542328', '星月');
+INSERT INTO `saleman` VALUES ('106', '杉原木', '100', '309.9999949336052', '李三');
+INSERT INTO `saleman` VALUES ('107', '杂小径', '10', '100', '张三');
+INSERT INTO `saleman` VALUES ('108', '杂原木', '50', '154.9999974668026', '任河');
+INSERT INTO `saleman` VALUES ('108', '杂小径', '100', '520.0000107288361', '任河');
 
 -- ----------------------------
 -- Table structure for staff
@@ -998,16 +1027,23 @@ CREATE TABLE `treeout` (
 -- ----------------------------
 -- Records of treeout
 -- ----------------------------
-INSERT INTO `treeout` VALUES ('1', '杂原木', '18', '8.8', '100', '36.59999966621399', '1', '1');
-INSERT INTO `treeout` VALUES ('1', '杉原木', '4', '8.8', '100', '4.1600000113248825', '1', '1');
-INSERT INTO `treeout` VALUES ('2', '杉原木', '9', '4', '100', '3.799999877810478', '1', '1');
-INSERT INTO `treeout` VALUES ('2', '杉小径', '10', '9.2', '100', '14.900000393390656', '1', '1');
-INSERT INTO `treeout` VALUES ('103', '杉小径', '6', '8.8', '100', '3.7300001829862595', '1', '1');
-INSERT INTO `treeout` VALUES ('103', '松小径', '18', '8.8', '100', '0', '1', '1');
-INSERT INTO `treeout` VALUES ('104', '杉原木', '18', '5.8', '100', '20.999999344348907', '1', '1');
-INSERT INTO `treeout` VALUES ('104', '杉小径', '4', '2.6', '100', '0.5900000222027302', '1', '1');
-INSERT INTO `treeout` VALUES ('123', '杉原木', '4', '8.8', '100', '1.1300000362098217', '1', '1');
-INSERT INTO `treeout` VALUES ('123', '杉小径', '20', '9', '100', '0', '1', '1');
+INSERT INTO `treeout` VALUES ('1', '杂原木', '18', '8.8', '100', '36.59999966621399', '50', '1829.9999833106995');
+INSERT INTO `treeout` VALUES ('1', '杉原木', '4', '8.8', '100', '4.1600000113248825', '100', '416.00000113248825');
+INSERT INTO `treeout` VALUES ('2', '杉原木', '9', '4', '100', '3.799999877810478', '2', '7.599999755620956');
+INSERT INTO `treeout` VALUES ('2', '杉小径', '10', '9.2', '100', '14.900000393390656', '2', '29.80000078678131');
+INSERT INTO `treeout` VALUES ('103', '杉小径', '6', '8.8', '100', '3.7300001829862595', '2', '7.460000365972519');
+INSERT INTO `treeout` VALUES ('103', '松小径', '18', '8.8', '100', '0', '2', '0');
+INSERT INTO `treeout` VALUES ('104', '杉原木', '18', '5.8', '100', '20.999999344348907', '100', '2099.9999344348907');
+INSERT INTO `treeout` VALUES ('104', '杉小径', '4', '2.6', '100', '0.5900000222027302', '20', '11.800000444054604');
+INSERT INTO `treeout` VALUES ('105', '杉原木', '18', '4', '100', '13.199999928474426', '100', '1319.9999928474426');
+INSERT INTO `treeout` VALUES ('105', '松原木', '8', '2.6', '100', '1.7999999225139618', '50', '89.99999612569809');
+INSERT INTO `treeout` VALUES ('106', '杉原木', '8', '4', '100', '3.099999949336052', '100', '309.9999949336052');
+INSERT INTO `treeout` VALUES ('106', '杉小径', '4', '2.6', '100', '0.5900000222027302', '20', '11.800000444054604');
+INSERT INTO `treeout` VALUES ('106', '松原木', '10', '4', '100', '4.500000178813934', '50', '225.00000894069672');
+INSERT INTO `treeout` VALUES ('108', '杂原木', '8', '4', '100', '3.099999949336052', '50', '154.9999974668026');
+INSERT INTO `treeout` VALUES ('108', '杂小径', '10', '2.6', '200', '5.200000107288361', '100', '520.0000107288361');
+INSERT INTO `treeout` VALUES ('123', '杉原木', '4', '8.8', '100', '1.1300000362098217', '2', '2.2600000724196434');
+INSERT INTO `treeout` VALUES ('123', '杉小径', '20', '9', '100', '0', '2', '0');
 
 -- ----------------------------
 -- Table structure for treeprice
